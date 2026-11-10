@@ -1,7 +1,11 @@
+package component.logicgate;
+
+import components.standard.Standard;
+
 /**
  * {@code LogicGateKernel} not enhanced with secondary methods.
  */
-public interface LogicGate, LogicGateKernel {
+public interface LogicGateKernel extends Standard<LogicGate> {
     enum Signal {
         LOW,
         HIGH
@@ -14,15 +18,15 @@ public interface LogicGate, LogicGateKernel {
     }
 
     /**
-     * Sets the value of {@code position} to {@code signal} when {@code signal} is contained in Signal enum
+     * Sets the value of {@code signalA} and {@code signalB}, both of which must be contained in Signal enum
      *
-     * @param position
-     *                  the input location (in 2 input gate, top or bottom)
-     * @param signal
-     *              the value to set at {@code position}
+     * @param signalA
+     *              the signal to set a value to
+     * @param signalB
+     *              the signal to set a value to
      * @updates this
      */
-    void setInput(int position, Signal signal);
+    void setInput(int signalA, Signal signalB);
 
     /**
      * Outputs the signal after evaluating the gate Logic.

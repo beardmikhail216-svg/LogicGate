@@ -17,3 +17,9 @@ the following form: YYYY.0M.0D.
 - Created LogicGateKernel by referencing NaturalNumberKernel
 
 ## [2026.11.09]
+
+## Added
+
+- Created LogicGate by referencing NaturalNumber and Queue
+
+## [2026.11.09]
