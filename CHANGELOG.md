@@ -23,3 +23,15 @@ the following form: YYYY.0M.0D.
 - Created LogicGate by referencing NaturalNumber and Queue
 
 ## [2026.11.09]
+
+## Added
+
+- Began LogicGateSecondary
+
+## [2026.11.09]
+
+## Added
+
+- Began LogicGate1L by referencing NaturalNumber1L and Queue1L
+
+## [2026.11.09]

@@ -1,4 +1,4 @@
-package component.logicgate;
+package components.logicgate;
 
 /**
 * {@code LogicGate} enhanced with secondary methods.
@@ -6,7 +6,10 @@ package component.logicgate;
 public interface LogicGate extends Comparable<LogicGate>, LogicGateKernel {
 
     /**
-     * Changes one of the {@code Signal}
+     * Changes one of the {@code Signal}.
+     *
+     * @param signal
+     *              the {@code signal} whose value is to be changed
      */
     void changeInput(Signal signal);
 
@@ -21,9 +24,9 @@ public interface LogicGate extends Comparable<LogicGate>, LogicGateKernel {
     Signal signalA();
 
     /**
-     * Reports the first input signal.
+     * Reports the seoncd input signal.
      *
-     * @return the first signal of {@code this}
+     * @return the second signal of {@code this}
      * @aliases reference returned by {@code signalB}
      * @requires {@code this /= <>}
      * @ensures {@code <signalB> is prefix of this}
@@ -31,7 +34,7 @@ public interface LogicGate extends Comparable<LogicGate>, LogicGateKernel {
     Signal signalB();
 
     /**
-     * Reports whether {@code this} is HIGH
+     * Reports whether {@code this} is HIGH.
      *
      * @return true iff {@code this} is HIGH
      */

@@ -1,4 +1,4 @@
-package component.logicgate;
+package components.logicgate;
 /**
  * {@code LogicGate1L} implemenations of primary methods.
  * @correspondence
@@ -77,23 +77,59 @@ public class LogicGate1L extends LogicGateSecondary {
      * Kernel methods ---------------------------------------------------------
      */
     @Override
-    public final void setInput(int signalA, Signal signalB) {
-        /**
-         * Implementation
-         */
+    public final void setInput(Signal a, Signal b) {
+        signalA = a;
+        signalB = b;
     }
 
     @Override
     public final Signal output() {
-        /**
-         * Implementation
-         */
+        Signal out = Signal.LOW;
+        GateType gateType = this.gateType;
+        switch (gateType) {
+            case AND: {
+                Signal a = this.signalA;
+                Signal b = this.signalB;
+                if (a.equals(b) && a == Signal.HIGH) {
+                    out = Signal.HIGH;
+                }
+                break;
+            }
+            case OR: {
+                Signal a = this.signalA;
+                Signal b = this.signalB;
+                if (a == Signal.HIGH || b == Signal.HIGH) {
+                    out = Signal.HIGH;
+                }
+                break;
+            }
+            case NOT: {
+                Signal signal = this.signalA;
+                if (signal == Signal.HIGH) {
+                    signal = Signal.LOW;
+                } else {
+                    signal = Signal.HIGH;
+                }
+                break;
+            }
+            case XOR: {
+                Signal a = this.signalA;
+                Signal b = this.signalB;
+                if (!a.equals(b)) {
+                    out = Signal.HIGH;
+                }
+                break;
+            }
+            default: {
+                //this shouldnt happen
+                break;
+            }
+        }
+        return out;
     }
 
     @Override
     public final void setGateType(GateType type) {
-        /**
-         * Implementation
-         */
+        gateType = type;
     }
 }

@@ -1,14 +1,14 @@
-package component.logicgate;
+package components.logicgate;
 
 /**
  * Layered implementations of secondary methods for {@code LogicGate}.
  */
 public abstract class LogicGateSecondary implements LogicGate {
-/**
-     * Changes one of the {@code Signal}
+    /**
+     * Changes one of the {@code Signal}.
      */
     @Override
-    void changeInput(Signal signal) {
+    public void changeInput(Signal signal) {
         /**
          * implementation
          */
@@ -24,7 +24,7 @@ public abstract class LogicGateSecondary implements LogicGate {
      */
     @Override
     public Signal signalA() {
-        Signal signal = HIGH;
+        Signal signal = Signal.HIGH;
         /**
          * implementation
          */
@@ -41,7 +41,7 @@ public abstract class LogicGateSecondary implements LogicGate {
      */
     @Override
     public Signal signalB() {
-        Signal signal = HIGH;
+        Signal signal = Signal.HIGH;
         /**
          * implementation
          */
@@ -49,7 +49,7 @@ public abstract class LogicGateSecondary implements LogicGate {
     }
 
     /**
-     * Reports whether {@code this} is HIGH
+     * Reports whether {@code this} is HIGH.
      *
      * @return true iff {@code this} is HIGH
      */
