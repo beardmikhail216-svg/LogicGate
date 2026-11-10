@@ -11,3 +11,9 @@ the following form: YYYY.0M.0D.
 - Designed a LogicGate component
 
 ## [2026.11.09]
+
+## Added
+
+- Created LogicGateKernel by referencing NaturalNumberKernel
+
+## [2026.11.09]
