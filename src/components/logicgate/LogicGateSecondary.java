@@ -20,39 +20,62 @@ public abstract class LogicGateSecondary implements LogicGate {
                         && this.signalB() == Signal.HIGH) {
                     out = Signal.HIGH;
                 }
+                break;
             }
             case OR: {
                 if (this.signalA() == Signal.HIGH
                         || this.signalB() == Signal.HIGH) {
                     out = Signal.HIGH;
                 }
+                break;
             }
             case NOT: {
                 if (this.signalA() == Signal.LOW) {
                     out = Signal.HIGH;
                 }
+                break;
             }
             case XOR: {
                 if (this.signalA() != this.signalB()) {
                     out = Signal.HIGH;
                 }
+                break;
+            }
+            default: {
+                //this shouldnt happen
+                break;
             }
         }
         return out;
     }
 
     /**
-     * Changes the value of {@code Signal}.
+     * Changes the value of {@code SignalA}.
      *
-     * @param signal
+     * @param signalA
      *            the {@code signal} whose value is to be changed
      */
     @Override
-    public void changeInput(Signal signal) {
-        if (signal == Signal.HIGH) {
-            signal = Signal.LOW;
+    public void changeInputA(Signal signalA) {
+        if (signalA == Signal.HIGH) {
+            this.setInput(signalA, Signal.LOW);
         } else {
-            signal = Signal.HIGH;
+            this.setInput(signalA, Signal.HIGH);
+        }
+    }
+
+    /**
+     * Changes the value of {@code SignalB}.
+     *
+     * @param signalB
+     *            the {@code signal} whose value is to be changed
+     */
+    @Override
+    public void changeInputB(Signal signalB) {
+        if (signalB == Signal.HIGH) {
+            this.setInput(signalB, Signal.LOW);
+        } else {
+            this.setInput(signalB, Signal.HIGH);
         }
     }
 

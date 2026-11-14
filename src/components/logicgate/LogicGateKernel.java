@@ -24,7 +24,6 @@ public interface LogicGateKernel extends Standard<LogicGate> {
      * Reports the first input signal of {@code this}.
      *
      * @return the first signal of {@code this}
-     * @ensures {@code signalA} = <signalA>
      */
     Signal signalA();
 
@@ -32,7 +31,6 @@ public interface LogicGateKernel extends Standard<LogicGate> {
      * Reports the second input signal of {@code this}.
      *
      * @return the second signal of {@code this}
-     * @ensures {@code signalB} = <signalB>
      */
     Signal signalB();
 
@@ -44,14 +42,14 @@ public interface LogicGateKernel extends Standard<LogicGate> {
     GateType gateType();
 
     /**
-     * Sets the value of {@code signal} which must be contained in Signal enum.
+     * Sets the value of {@code signalA} which must be contained in Signal enum.
      *
-     * @param signal
+     * @param signalA
      *            the signal to set a value to
      * @requires signal != null
      * @updates this
      */
-    void setInput(Signal signal);
+    void setInput(Signal signalA);
 
     /**
      * Sets the value of {@code signalA} and {@code signalB}, both of which must

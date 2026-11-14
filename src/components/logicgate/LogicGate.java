@@ -15,12 +15,20 @@ public interface LogicGate extends LogicGateKernel {
     Signal output();
 
     /**
-     * Changes the value of {@code Signal}.
+     * Changes the value of {@code SignalA}.
      *
-     * @param signal
+     * @param signalA
      *            the {@code signal} whose value is to be changed
      */
-    void changeInput(Signal signal);
+    void changeInputA(Signal signalA);
+
+    /**
+     * Changes the value of {@code SignalB}.
+     *
+     * @param signalB
+     *            the {@code signal} whose value is to be changed
+     */
+    void changeInputB(Signal signalB);
 
     /**
      * Reports whether the output of {@code this}'s gate is HIGH.

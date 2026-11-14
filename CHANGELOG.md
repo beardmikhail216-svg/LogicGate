@@ -26,5 +26,6 @@ the following form: YYYY.0M.0D.
 
 - added single input setInput method for NOT gate, and updated method headers for all existing methods in kernel interface.
 - rearranged methods contains in LogicGate and LogicGateKernel to help implementation of toString, equals, and hashcode.
+- finished methods for abstract and secondary. working on resolving issues with handling gate inputs (NOT only accepts one input whereas all other gates are hard coded to be two input--though more inputs are possible in actual gates)
 
 ## [2026.11.13]

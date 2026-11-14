@@ -64,7 +64,7 @@ public class LogicGate1L extends LogicGateSecondary {
     public final void transferFrom(LogicGate source) {
         assert source != null : "Violation of: source is not null";
         assert source != this : "Violation of: source is not this";
-        assert source instanceof LogicGate : "Violation of: source is of dynamic type LogicGate1L";
+        assert source instanceof LogicGate1L : "Violation of: source is of dynamic type LogicGate1L";
         /*
          * This cast cannot fail since the assert above would have stopped
          * execution in that case: source must be of dynamic type LogicGate1L,
@@ -82,79 +82,37 @@ public class LogicGate1L extends LogicGateSecondary {
      */
 
     @Override
-    public Signal signalA() {
+    public final Signal signalA() {
         return this.signalA;
     }
 
     @Override
-    public Signal signalB() {
+    public final Signal signalB() {
         return this.signalB;
     }
 
     @Override
-    public GateType gateType() {
+    public final GateType gateType() {
         return this.gateType;
     }
 
     @Override
-    public void setInput(Signal signal) {
+    public final void setInput(Signal signal) {
+        assert signal != null : "Violation of: signal is not null";
         this.signalA = signal;
     }
 
     @Override
-    public void setInput(Signal signalA, Signal signalB) {
+    public final void setInput(Signal signalA, Signal signalB) {
+        assert signalA != null : "Violation of: signalA is not null";
+        assert signalB != null : "Violation of: signalB is not null";
         this.signalA = signalA;
         this.signalB = signalB;
     }
 
     @Override
-    public void setGateType(GateType type) {
+    public final void setGateType(GateType type) {
+        assert type != null : "Violation of: type is not null";
         this.gateType = type;
-    }
-
-    @Override
-    public final Signal output() {
-        Signal out = Signal.LOW;
-        GateType gateType = this.gateType;
-        switch (gateType) {
-            case AND: {
-                Signal a = this.signalA;
-                Signal b = this.signalB;
-                if (a.equals(b) && a == Signal.HIGH) {
-                    out = Signal.HIGH;
-                }
-                break;
-            }
-            case OR: {
-                Signal a = this.signalA;
-                Signal b = this.signalB;
-                if (a == Signal.HIGH || b == Signal.HIGH) {
-                    out = Signal.HIGH;
-                }
-                break;
-            }
-            case NOT: {
-                Signal signal = this.signalA;
-                if (signal == Signal.HIGH) {
-                    signal = Signal.LOW;
-                } else {
-                    signal = Signal.HIGH;
-                }
-                break;
-            }
-            case XOR: {
-                Signal a = this.signalA;
-                Signal b = this.signalB;
-                if (!a.equals(b)) {
-                    out = Signal.HIGH;
-                }
-                break;
-            }
-            default: {
-                //this shouldnt happen
-                break;
-            }
-        }
-        return out;
     }
 }
