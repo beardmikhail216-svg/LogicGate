@@ -1,8 +1,15 @@
 package components.logicgate;
+
 /**
  * {@code LogicGate1L} implemenations of primary methods.
- * @correspondence
- * @convention
+ *
+ * @correspondence <pre>
+ * </pre>
+ * @convention <pre>
+ * </pre>
+ *
+ * @author Mikhail Beard
+ *
  */
 public class LogicGate1L extends LogicGateSecondary {
 
@@ -13,17 +20,13 @@ public class LogicGate1L extends LogicGateSecondary {
     private Signal signalA;
     private Signal signalB;
 
-
-    /**
-     * Representation of {@code this}.
-     */
-    private LogicGate rep;
-
     /**
      * Creator of initial representation.
      */
     private void createNewRep() {
-        this.rep = new LogicGate1L();
+        this.gateType = GateType.AND;
+        this.signalA = Signal.LOW;
+        this.signalB = Signal.LOW;
     }
 
     /*
@@ -61,25 +64,52 @@ public class LogicGate1L extends LogicGateSecondary {
     public final void transferFrom(LogicGate source) {
         assert source != null : "Violation of: source is not null";
         assert source != this : "Violation of: source is not this";
-        assert source instanceof LogicGate
-                : "Violation of: source is of dynamic type LogicGate1L";
+        assert source instanceof LogicGate : "Violation of: source is of dynamic type LogicGate1L";
         /*
          * This cast cannot fail since the assert above would have stopped
          * execution in that case: source must be of dynamic type LogicGate1L,
          * and the ? must be T or the call would not have compiled.
          */
         LogicGate1L localSource = (LogicGate1L) source;
-        this.rep = localSource.rep;
+        this.gateType = localSource.gateType;
+        this.signalA = localSource.signalA;
+        this.signalB = localSource.signalB;
         localSource.createNewRep();
     }
 
     /*
      * Kernel methods ---------------------------------------------------------
      */
+
     @Override
-    public final void setInput(Signal a, Signal b) {
-        signalA = a;
-        signalB = b;
+    public Signal signalA() {
+        return this.signalA;
+    }
+
+    @Override
+    public Signal signalB() {
+        return this.signalB;
+    }
+
+    @Override
+    public GateType gateType() {
+        return this.gateType;
+    }
+
+    @Override
+    public void setInput(Signal signal) {
+        this.signalA = signal;
+    }
+
+    @Override
+    public void setInput(Signal signalA, Signal signalB) {
+        this.signalA = signalA;
+        this.signalB = signalB;
+    }
+
+    @Override
+    public void setGateType(GateType type) {
+        this.gateType = type;
     }
 
     @Override
@@ -126,10 +156,5 @@ public class LogicGate1L extends LogicGateSecondary {
             }
         }
         return out;
-    }
-
-    @Override
-    public final void setGateType(GateType type) {
-        gateType = type;
     }
 }
