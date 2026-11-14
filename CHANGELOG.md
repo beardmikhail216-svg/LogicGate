@@ -21,3 +21,10 @@ the following form: YYYY.0M.0D.
 - renamed component file to components
 
 ## [2026.11.10]
+
+## Updated
+
+- added single input setInput method for NOT gate, and updated method headers for all existing methods in kernel interface.
+- rearranged methods contains in LogicGate and LogicGateKernel to help implementation of toString, equals, and hashcode.
+
+## [2026.11.13]

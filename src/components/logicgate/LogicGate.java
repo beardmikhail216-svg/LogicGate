@@ -1,42 +1,31 @@
 package components.logicgate;
 
 /**
-* {@code LogicGate} enhanced with secondary methods.
-*/
-public interface LogicGate extends Comparable<LogicGate>, LogicGateKernel {
+ * {@code LogicGate} enhanced with secondary methods.
+ */
+public interface LogicGate extends LogicGateKernel {
 
     /**
-     * Changes one of the {@code Signal}.
+     * Returns the output signal based on the current signal inputs and gate
+     * type.
+     *
+     * @return the value
+     * @ensures output = evaluation of {@code this} gate's inputs and type
+     */
+    Signal output();
+
+    /**
+     * Changes the value of {@code Signal}.
      *
      * @param signal
-     *              the {@code signal} whose value is to be changed
+     *            the {@code signal} whose value is to be changed
      */
     void changeInput(Signal signal);
 
     /**
-     * Reports the first input signal.
+     * Reports whether the output of {@code this}'s gate is HIGH.
      *
-     * @return the first signal of {@code this}
-     * @aliases reference returned by {@code signalA}
-     * @requires {@code this /= <>}
-     * @ensures {@code <signalA> is prefix of this}
-     */
-    Signal signalA();
-
-    /**
-     * Reports the seoncd input signal.
-     *
-     * @return the second signal of {@code this}
-     * @aliases reference returned by {@code signalB}
-     * @requires {@code this /= <>}
-     * @ensures {@code <signalB> is prefix of this}
-     */
-    Signal signalB();
-
-    /**
-     * Reports whether {@code this} is HIGH.
-     *
-     * @return true iff {@code this} is HIGH
+     * @return true iff the output of {@code this}'s gate is HIGH
      */
     boolean isOutputHigh();
 
