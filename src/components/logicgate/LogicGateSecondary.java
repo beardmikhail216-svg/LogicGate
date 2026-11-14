@@ -5,47 +5,55 @@ package components.logicgate;
  */
 public abstract class LogicGateSecondary implements LogicGate {
     /**
-     * Changes one of the {@code Signal}.
+     * Returns the output signal based on the current signal inputs and gate
+     * type.
+     *
+     * @return the value
+     * @ensures output = evaluation of {@code this} gate's inputs and type
+     */
+    @Override
+    public Signal output() {
+        Signal out = Signal.LOW;
+        switch (this.gateType()) {
+            case AND: {
+                if (this.signalA() == Signal.HIGH
+                        && this.signalB() == Signal.HIGH) {
+                    out = Signal.HIGH;
+                }
+            }
+            case OR: {
+                if (this.signalA() == Signal.HIGH
+                        || this.signalB() == Signal.HIGH) {
+                    out = Signal.HIGH;
+                }
+            }
+            case NOT: {
+                if (this.signalA() == Signal.LOW) {
+                    out = Signal.HIGH;
+                }
+            }
+            case XOR: {
+                if (this.signalA() != this.signalB()) {
+                    out = Signal.HIGH;
+                }
+            }
+        }
+        return out;
+    }
+
+    /**
+     * Changes the value of {@code Signal}.
+     *
+     * @param signal
+     *            the {@code signal} whose value is to be changed
      */
     @Override
     public void changeInput(Signal signal) {
-        /**
-         * implementation
-         */
-    }
-
-    /**
-     * Reports the first input signal.
-     *
-     * @return the first signal of {@code this}
-     * @aliases reference returned by {@code signalA}
-     * @requires {@code this /= <>}
-     * @ensures {@code <signalA> is prefix of this}
-     */
-    @Override
-    public Signal signalA() {
-        Signal signal = Signal.HIGH;
-        /**
-         * implementation
-         */
-        return signal;
-    }
-
-    /**
-     * Reports the second input signal.
-     *
-     * @return the second signal of {@code this}
-     * @aliases reference returned by {@code signalB}
-     * @requires {@code this /= <>}
-     * @ensures {@code <signalB> is prefix of this}
-     */
-    @Override
-    public Signal signalB() {
-        Signal signal = Signal.HIGH;
-        /**
-         * implementation
-         */
-        return signal;
+        if (signal == Signal.HIGH) {
+            signal = Signal.LOW;
+        } else {
+            signal = Signal.HIGH;
+        }
     }
 
     /**
