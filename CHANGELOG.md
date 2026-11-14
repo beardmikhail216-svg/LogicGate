@@ -26,6 +26,8 @@ the following form: YYYY.0M.0D.
 
 - added single input setInput method for NOT gate, and updated method headers for all existing methods in kernel interface.
 - rearranged methods contains in LogicGate and LogicGateKernel to help implementation of toString, equals, and hashcode.
-- finished methods for abstract and secondary. working on resolving issues with handling gate inputs (NOT only accepts one input whereas all other gates are hard coded to be two input--though more inputs are possible in actual gates)
+- finished methods for abstract and secondary. working on resolving issues with handling gate inputs (NOT only accepts one input whereas all other gates are hard coded to be two input--though more inputs are possible in actual gates)(full logic gate circuit looks like a tree... possible future project)
+- added JUnit test feature
+- NEED to implement equals for test cases (and hashcode and toString() for discipline?). May also need a createFromArgsTest and createFromArgsRef for testing.
 
 ## [2026.11.13]
